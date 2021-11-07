@@ -1,0 +1,202 @@
+@font-face {
+    font-family: "BangoPro";
+    src: url(font.ttf);
+}
+
+body {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    height: 100%;
+    background: url(image/bg.svg) repeat-x center/auto 100%;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: url(image/circle.svg) no-repeat 0/600% auto;
+    animation: circle 0.8s steps(6) infinite;
+}
+
+@keyframes circle {
+    0% {
+        background-position: 0;
+    }
+    100% {
+        background-position: 120%;
+    }
+}
+
+.sparkle {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    width: 400px;
+    height: 230px;
+    background: url(image/sparkle.svg) no-repeat center 0/auto 300%;
+    animation: sparkle 0.3s steps(3) infinite;
+    transition: transform 0.3s ease-in;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    0% {
+        background-position: center 0;
+    }
+    100% {
+        background-position: center 150%;
+    }
+}
+
+.sparkle.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.5s ease-out;
+    z-index: 3;
+}
+
+.book {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.page {
+    position: relative;
+    flex-grow: 1;
+}
+
+.page>.underlay, .page>.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.page>.half {
+    position: absolute;
+    height: 126px;
+    background: #fff;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.page>.overlay {
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 3;
+}
+
+.page>.rings {
+    position: absolute;
+    left: -25px;
+    width: 45px;
+    height: 110px;
+    background: url(image/rings.svg) no-repeat right/contain;
+    z-index: 4;
+}
+
+.page.top {
+    transform: translateY(4px);
+}
+
+.page.top>.half {
+    top: 20px;
+    left: 4px;
+    width: 232px;
+}
+
+.page.top>.overlay {
+    background-image: url(./image/page-top.svg);
+    background-position: bottom;
+}
+
+.page.top>.rings {
+    top: 33px;
+}
+
+.page.bottom {
+    transform: translate(-1px, -4px);
+}
+
+.page.bottom>.underlay {
+    background: url(./image/page-bottom.svg) no-repeat top/contain;
+    z-index: 1;
+}
+
+.page.bottom>.half {
+    top: 2px;
+    left: 6px;
+    width: 228px;
+}
+
+.page.bottom>.overlay {
+    background-image: url(./image/page-bottom-cover.svg);
+    background-position: top;
+}
+
+.page.bottom>.rings {
+    top: 15px;
+}
+
+.page>.half>.sheet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url(./costume/top18.jpg);
+}
+
+.page>.arrow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 28px;
+    text-align: center;
+    color: #fff;
+    font-family: "BangoPro";
+    z-index: 5;
+    user-select: none;
+}
+
+.page>.arrow.left {
+    left: -70px;
+}
+
+.page>.arrow.right {
+    right: -50px;
+}
+
+.page.top>.arrow {
+    top: 65px;
+}
+
+.page.bottom>.arrow {
+    top: 45px;
+}
